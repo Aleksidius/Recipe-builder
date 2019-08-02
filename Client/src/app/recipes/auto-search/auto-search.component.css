@@ -1,0 +1,31 @@
+.holder {
+  display: flex;
+  flex-direction: line;
+  margin: 5px;
+}
+
+.form {
+  display: flex;
+  min-width: 100px;
+  max-width: 200px;
+  margin-left: 20px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.button-holder {
+  display: flex;
+  flex-direction: line;
+  margin-right: 50px;
+}
+
+button {
+  margin: 3px;
+}
+
+.mat-form-field {
+  font-size: 18px;
+  padding: 0px;
+}

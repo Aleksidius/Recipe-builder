@@ -1,0 +1,30 @@
+
+.fill-space {
+  flex: 1 1 auto;
+  background-color: rgb(220, 220, 220);
+  background-color: rgb(255, 122, 122);
+}
+
+.auth-username {
+  margin-right: 20px;
+}
+
+button {
+  margin: 5px;
+}
+
+#forum-title {
+  color: rgb(48, 48, 182);
+  font-weight: bold;
+  font-size: 35px;
+  margin-left: 50px;
+}
+
+a {
+  text-decoration: none;
+  margin-right: 15px;
+}
+
+#top {
+  padding: 20px
+}

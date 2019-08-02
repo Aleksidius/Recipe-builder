@@ -1,0 +1,23 @@
+<mat-toolbar>
+  <a routerLink="/home">
+    <h1 id="forum-title">Recipe Builder</h1>
+  </a>
+
+  <ng-template [ngIf]="this.loggedIn">
+      <button mat-raised-button color="primary" routerLink="/recipes">My Recipes</button>
+      <button mat-raised-button color="primary" (click)="this.resetForm()" routerLink="/recipes/recipebuilder">Build Recipe</button>
+  </ng-template>
+
+  <span class="fill-space"></span>
+
+  <ng-template [ngIf]="!loggedIn">
+    <button mat-raised-button color="accent" routerLink="/register">Register</button>
+    <button mat-raised-button color="primary" routerLink="/login">Login</button>
+  </ng-template>
+
+  <ng-template [ngIf]="loggedIn">
+    <span class="auth-username">Wellcome {{ username }}!</span>
+    <button mat-stroked-button color="primary" appBoldElement (click)="triggerLogout()" 
+    appColorElement elementColor="rgb(254, 64, 129)">Logout</button>
+  </ng-template>
+</mat-toolbar>

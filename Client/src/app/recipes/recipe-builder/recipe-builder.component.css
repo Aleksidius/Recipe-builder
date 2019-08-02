@@ -1,0 +1,182 @@
+
+.child {
+  background-color: rgb(48, 48, 182, 0.90);
+  color: white;
+  border-radius: 7px;
+  padding: 3px;
+  font-weight: 600;
+  font-family: "Helvetica Neue", Helvetica, sans-serif; 
+  font-size: 12px;
+  margin: 4px;
+  width: 250px;
+  height: 30%;
+}
+
+.child2 {
+  float: top;
+  margin-right: 20%;
+}
+
+.child:hover{
+  color: aqua;
+}
+
+
+#id {
+  display: none;
+}
+
+.btn-link {
+  color: rgb(48, 48, 182);
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.btn-link:hover {
+  color: #ff4081;
+}
+
+/* .search {
+  font-weight: 600;
+  font-family: "Helvetica Neue", Helvetica, sans-serif; 
+  border-radius: 7px;
+  font-size: 14px;
+  color: rgb(48, 48, 182, 0.90);
+  width: 50%;
+  border-color: rgb(48, 48, 182, 0.50);
+} */
+
+.first {
+  color: black !important;
+}
+
+#filter {
+  color: black;
+  font-size: 14px;
+}
+
+.card-holder {
+  width: 80%;
+  margin: auto;
+  margin-bottom: 0;
+}
+
+.recipe-details {
+  display: flex;
+  flex-direction: line;
+  margin: auto;
+}
+
+.recipe-ingredients {
+  margin: 20px;
+}
+
+mat-card {
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+  background-color: #f5f5f5;
+}
+
+mat-card-title {
+  display: flex;
+  margin-left: 40px;
+  color: rgb(48, 48, 182);
+  font-size: 18px;
+}
+
+.recipe-info {
+  display: flex;
+  margin: 5px;
+  margin-left: 20px;
+  margin-right: 40px;
+  font-size: 17px;
+  color: rgb(48, 48, 182);
+}
+
+button {
+  margin: 5px;
+}
+
+.button-holder {
+  display: flex;
+  flex-direction: line;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-bottom: 0;
+}
+
+/* .right-buttons {
+  display: flex;
+  margin-left: auto;
+  margin-right: 0;
+
+} */
+
+label, h6 {
+  font-size: 18px;
+  color: rgb(48, 48, 182);
+}
+
+h5 {
+  font-size: 16px;
+  color: black;
+}
+
+.example-form {
+  margin-left: 10px;
+}
+
+.col-md-2 {
+  margin-left: 6px;
+}
+
+button.mat-raised-button.mat-primary, button.mat-raised-button.mat-accent {
+  margin-left: 15px !important;
+}
+
+#totalAmount, span.mat-button-wrapper {
+/* color: #ff4081 !important; */
+color :white !important;
+font-weight: 700 !important;
+font-size: 14px !important;
+}
+
+i {
+  color: rgb(48, 48, 182);
+}
+
+i:hover {
+  color: #ff4081;
+}
+
+a.alert {
+  color: #ff4081 !important;
+}
+
+.mat-card-content {
+  font-size: 16px;
+}
+
+
+#sort {
+  width: 180px;
+ }
+
+
+ div.overflow-auto {
+   height: 260px;
+ }
+
+ #products {
+   height: 400px !important;
+ }
+
+ div.overflow-auto.searchedRecipes {
+   height: 165px !important
+ }
+
+ p {
+   font-size: 12px;
+ }

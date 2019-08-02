@@ -1,0 +1,49 @@
+.col-md-3 {
+  padding-bottom: 0px;
+  padding-top: 30px;
+}
+
+.row {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.example-card {
+  margin-left: 20px;
+  margin-right: 20px;
+  max-width: 100%;
+  background-color: #f5f5f5;
+}
+
+img {
+  margin-left: 10px;
+  width: 70%;
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 4px;
+}
+
+mat-card-title {
+  display: flex;
+  color: rgb(48, 48, 182);
+}
+
+.recipe-search {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: auto;
+  padding: 10px;
+}
+
+.recipe-nav {
+  display: flex;
+  flex-direction: line;
+  width: 90%;
+  margin: auto;
+  padding: 10px;
+}
+
+button {
+  margin: 3px;
+}

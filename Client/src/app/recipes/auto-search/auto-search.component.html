@@ -1,0 +1,17 @@
+<div class="holder">
+  <div class="button-holder">
+    <span><button mat-raised-button color="accent" (click)="newSearch()">New</button></span>
+    <span><button mat-raised-button color="primary" (click)="emitSearchEvent()">SEARCH</button></span>
+  </div>
+  <form class="form">
+    <mat-form-field class="full-width">
+      <input type="text" placeholder="Recipe Name" aria-label="Number" matInput [formControl]="recipeControl"
+        [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option" (click)="select(option)">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+</div>

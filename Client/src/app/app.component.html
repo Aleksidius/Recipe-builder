@@ -1,0 +1,6 @@
+<app-navbar [loggedIn]="isLogged" [username]="username" (toggleLogout)="logout()"></app-navbar>
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
+<app-footer></app-footer>
+

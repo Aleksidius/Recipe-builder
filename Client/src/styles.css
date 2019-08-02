@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+/* @import "https://www.w3schools.com/w3css/4/w3.css"; */
+@import '~ngx-toastr/toastr';
+
+body {
+  margin: 0;
+  padding: 0;
+}
+.centered {
+  text-align: center;
+}
+.width-50 {
+  width: 50%;
+}
+.width-100{
+width: 100%;
+}
+

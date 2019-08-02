@@ -1,0 +1,133 @@
+<div class="row">
+  <div class="col-md-7">
+    <mat-card>
+
+      <mat-card-title>
+        {{currentRecipe.title}}
+      </mat-card-title>
+
+      <mat-card-content class="button-holder">
+        <span><button *ngIf="!IngradientesIsShown" mat-raised-button color="primary" (click)="showIngradientes()">Show
+            Ingredients</button></span>
+        <span><button *ngIf="IngradientesIsShown" mat-raised-button color="accent" (click)="showIngradientes()">Hide
+            Ingredients</button></span>
+        <span><button *ngIf="!BaseNutrientsIsShown" mat-raised-button color="primary" (click)="showNutrients()">Show
+            Nutrients</button></span>
+        <span><button *ngIf="BaseNutrientsIsShown" mat-raised-button color="accent" (click)="showNutrients()">Hide
+            Nutrients</button></span>
+        <div class="right-buttons">
+          <span><button mat-raised-button color="primary"
+              (click)="this.editRecipe(this.currentRecipe)">Modify</button></span>
+          <span><button mat-raised-button color="accent" (click)="this.deleteRecipe(this.currentRecipe.id)"
+              routerLink="/recipes/">Delete</button></span> 
+        </div>
+      </mat-card-content>
+
+      <mat-card-content class="recipe-info">
+        <ul>
+          <li>Category: {{currentRecipe.category}}</li>
+          <li>Author: {{currentRecipe.author}} </li>
+          <li>Created on: {{currentRecipe.created | date: 'short'}}</li>
+        </ul>
+      </mat-card-content>
+
+      <mat-card-content class="recipe-info">
+        <ul *ngIf="IngradientesIsShown"> <strong style="font-size: 20px">Ingradientes</strong>
+          <li *ngFor="let ingr of recipeIngradients" appBoldElement (mouseover)="this.showIngradientNutrients(ingr)"
+            (mouseout)="this.showIngradientNutrients(ingr)">
+            {{ingr.grams}} gr. - {{ingr.description}}
+          </li>
+        </ul>
+      </mat-card-content>
+
+      <mat-card-content class="nutrient-info">
+        <div *ngIf="this.IngradientsNutrIsShown">
+          <p> Energy - {{this.currentIngradient.nutritions.ENERC_KCAL.value.toFixed(0)}} kcal. /
+            Protein - {{this.currentIngradient.nutritions.PROCNT.value.toFixed(0)}} g. /
+            Total Fat - {{this.currentIngradient.nutritions.FAT.value.toFixed(0)}} g. /
+            Sugars - {{this.currentIngradient.nutritions.SUGAR.value.toFixed(0)}} g. /
+            Fiber - {{this.currentIngradient.nutritions.FIBTG.value.toFixed(0)}} g.
+          </p>
+        </div>
+      </mat-card-content>
+
+      <mat-card-content *ngIf="this.isComplex" class="recipe-info">
+        <ul *ngIf="IngradientesIsShown"> <strong style="font-size: 20px">Included Recipes</strong>
+          <li *ngFor="let recipe of childRecipes" appBoldElement (mouseover)="showRecNutrients(recipe)"
+            (mouseout)="showRecNutrients(recipe)">{{recipe.title}}</li>
+        </ul>
+      </mat-card-content>
+
+      <mat-card-content class="nutrient-info">
+        <div *ngIf="this.includedRecipeNutrIsShown">
+          <p> Energy - {{this.includedRecipeNutr.ENERC_KCAL.value.toFixed(0)}} kcal. /
+            Protein - {{this.includedRecipeNutr.PROCNT.value.toFixed(0)}} g. /
+            Total Fat - {{this.includedRecipeNutr.FAT.value.toFixed(0)}} g. /
+            Sugars - {{this.includedRecipeNutr.SUGAR.value.toFixed(0)}} g. /
+            Fiber - {{this.includedRecipeNutr.FIBTG.value.toFixed(0)}} g.
+          </p>
+        </div>
+      </mat-card-content>
+
+      <mat-card-content class="recipe-info">
+        <ul *ngIf="BaseNutrientsIsShown"> <strong style="font-size: 20px">Nutrients</strong>
+          <li>{{this.recipeNutrients.ENERC_KCAL.desciption}} - {{this.recipeNutrients.ENERC_KCAL.value.toFixed(0)}}
+            {{this.recipeNutrients.ENERC_KCAL.unit}}.</li>
+          <li>{{this.recipeNutrients.PROCNT.desciption}} - {{this.recipeNutrients.PROCNT.value.toFixed(0)}}
+            {{this.recipeNutrients.PROCNT.unit}}.</li>
+          <li>{{this.recipeNutrients.FAT.desciption}} - {{this.recipeNutrients.FAT.value.toFixed(0)}}
+            {{this.recipeNutrients.FAT.unit}}.</li>
+          <li>{{this.recipeNutrients.SUGAR.desciption}} - {{this.recipeNutrients.SUGAR.value.toFixed(0)}}
+            {{this.recipeNutrients.SUGAR.unit}}.</li>
+          <li>{{this.recipeNutrients.FIBTG.desciption}} - {{this.recipeNutrients.FIBTG.value.toFixed(0)}}
+            {{this.recipeNutrients.FIBTG.unit}}.</li>
+        </ul>
+        <mat-card-content class="right-buttons">
+          <span><button *ngIf="!AllNutrientsIsShown&&BaseNutrientsIsShown" mat-raised-button color="primary"
+              (click)="showAllNutrients()">Show All
+              Nutrients</button></span>
+          <span><button *ngIf="AllNutrientsIsShown&&BaseNutrientsIsShown" mat-raised-button color="accent"
+              (click)="showAllNutrients()">Hide
+              All
+              Nutrients</button></span>
+        </mat-card-content>
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+  <div class="col-md-4">
+    <img src="../../../assets/images/image{{this.currentRecipe.category}}.jpg" alt="recipe">
+    <mat-card *ngIf="AllNutrientsIsShown&&BaseNutrientsIsShown">
+      <mat-card-content class="recipe-info">
+        <ul *ngIf="AllNutrientsIsShown&&BaseNutrientsIsShown"> <strong style="font-size: 17px">Vitamins</strong>
+          <li>{{this.recipeNutrients.VITA_IU.desciption}} - {{this.recipeNutrients.VITA_IU.value.toFixed(0)}}
+            {{this.recipeNutrients.VITA_IU.unit}}.</li>
+          <li>{{this.recipeNutrients.VITB12.desciption}} - {{this.recipeNutrients.VITB12.value.toFixed(0)}}
+            {{this.recipeNutrients.VITB12.unit}}.</li>
+          <li>{{this.recipeNutrients.VITC.desciption}} - {{this.recipeNutrients.VITC.value.toFixed(0)}}
+            {{this.recipeNutrients.VITC.unit}}.</li>
+          <li>{{this.recipeNutrients.VITD.desciption}} - {{this.recipeNutrients.VITD.value.toFixed(0)}}
+            {{this.recipeNutrients.VITD.unit}}.</li>
+          <li>{{this.recipeNutrients.TOCPHA.desciption}} - {{this.recipeNutrients.TOCPHA.value.toFixed(0)}}
+            {{this.recipeNutrients.TOCPHA.unit}}.</li>
+        </ul>
+
+      </mat-card-content>
+      <mat-card-content class="recipe-info">
+        <ul *ngIf="AllNutrientsIsShown&&BaseNutrientsIsShown"> <strong style="font-size: 17px">Minerals</strong>
+          <li>{{this.recipeNutrients.K.desciption}} - {{this.recipeNutrients.K.value.toFixed(0)}}
+            {{this.recipeNutrients.K.unit}}.</li>
+          <li>{{this.recipeNutrients.CA.desciption}} - {{this.recipeNutrients.CA.value.toFixed(0)}}
+            {{this.recipeNutrients.CA.unit}}.</li>
+          <li>{{this.recipeNutrients.NA.desciption}} - {{this.recipeNutrients.NA.value.toFixed(0)}}
+            {{this.recipeNutrients.NA.unit}}.</li>
+          <li>{{this.recipeNutrients.P.desciption}} - {{this.recipeNutrients.P.value.toFixed(0)}}
+            {{this.recipeNutrients.P.unit}}.</li>
+          <li>{{this.recipeNutrients.FE.desciption}} - {{this.recipeNutrients.FE.value.toFixed(0)}}
+            {{this.recipeNutrients.FE.unit}}.</li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>

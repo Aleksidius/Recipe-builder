@@ -1,0 +1,54 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="recipe-nav">
+        <span><button mat-raised-button color="primary" (click)="this.allUserRecipes()">All My Recipes</button></span>
+        <ng-container *ngFor="let category of this.foodCategories">
+          <button mat-stroked-button color="primary" (click)="this.selectCategory(category)" appBoldElement>
+            {{category}}</button>
+        </ng-container>
+        <span><button *ngIf="!showRecipeSearch" mat-raised-button color="primary" (click)="recipeSearchToggle()">Recipe
+            Search</button></span>
+        <span><button *ngIf="showRecipeSearch" mat-raised-button color="accent" (click)="recipeSearchToggle()"
+            (click)="this.allUserRecipes()">Hide
+            Search</button></span>
+      </div>
+
+      <div class="recipe-search" *ngIf="showRecipeSearch">
+        <app-nutrient-search [searchedRecipes]="userRecipesToShow" [allUserRecipes]="combinedUserRecipes"
+          (showSearched)="this.showSearched($event)" (showAllRecipes)="this.allUserRecipes($event)">
+        </app-nutrient-search>
+        <app-auto-search [searchedRecipes]="userRecipesToShow" [allUserRecipes]="combinedUserRecipes"
+          (showSearched)="this.showSearched($event)" (showAllRecipes)="this.allUserRecipes($event)"></app-auto-search>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+
+    <ng-container *ngFor="let rec of this.userRecipesToShow">
+      <div class="col-md-3">
+        <mat-card class="example-card mx-auto" (click)="showRecipe(rec)" appColorElement
+          elementColor="rgb(230, 230, 230)">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{rec.title}}</mat-card-title>
+            <mat-card-subtitle>Category: {{rec.category}} | grams: {{calculateWeight(rec)}} </mat-card-subtitle>
+            <mat-card-subtitle> </mat-card-subtitle>
+          </mat-card-header>
+
+          <img src="../../../assets/images/image{{rec.category}}.jpg" alt="recipe">
+
+          <mat-card-content>
+            <mat-card-header>
+              <mat-card-subtitle>
+                Since {{rec.created}}
+              </mat-card-subtitle>
+            </mat-card-header>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<form #regForm="ngForm" (ngSubmit)="triggerRegister(regName.value,regPass.value,regEmail.value,regFirstName.value,regLastName.value)">
+  <div class="auth-centered">
+
+    <mat-form-field>
+      <input #regName="ngModel" name="name" matInput placeholder="Username" type="text" ngModel required minlength="3"
+        maxlength="20">
+    </mat-form-field>
+    <span class="info" *ngIf="regName.invalid&&regName.pristine">
+      Name is <strong>required!</strong></span>
+    <span class="itsOk" *ngIf="regName.valid">
+      It`s <strong>OK!</strong></span>
+    <span class="alert" *ngIf="!!(regName.dirty&&regName.invalid&&regName.control.errors.required)">
+      Name is <strong>required!</strong></span>
+    <span class="alert" *ngIf="!!(regName.dirty&&regName.invalid&&regName.control.errors.minlength)">
+      The name <strong>must be longer!</strong></span>
+    <br />
+
+    <mat-form-field>
+      <input #regPass="ngModel" name="password" matInput placeholder="Password" type="password" ngModel required
+      pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$"
+      minlength="3"
+      maxlength="20">
+    </mat-form-field>
+
+    <span class="info" *ngIf="regPass.invalid&&regPass.pristine">
+      Password is <strong>required!</strong></span>
+    <span class="itsOk" *ngIf="regPass.valid">
+      It`s <strong>OK!</strong></span>
+    <span class="alert" *ngIf="!!(regPass.dirty&&regPass.invalid&&regPass.control.errors.required)">Password is
+      <strong>required!</strong></span>
+    <span class="alert" *ngIf="!!(regPass.dirty&&regPass.invalid&&regPass.control.errors.pattern)">The password is
+      <strong>too simple!</strong></span>
+    <br />
+
+    <mat-form-field>
+      <input #regEmail="ngModel" matInput name="email" placeholder="Email" type="email" ngModel required
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+    </mat-form-field>
+
+    <span class="info" *ngIf="regEmail.invalid&&regEmail.pristine">
+      Email is <strong>required!</strong></span>
+    <span class="alert" *ngIf="regEmail.dirty && regEmail.invalid">
+      Enter <strong>a valid email !</strong></span>
+    <span class="itsOk" *ngIf="regEmail.valid">
+      It`s <strong>OK!</strong></span>
+    <br />
+
+    
+    <mat-form-field>
+      <input #regFirstName="ngModel" name="firstName" matInput placeholder="First Name" type="text" ngModel required minlength="2"
+        maxlength="20">
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <input #regLastName="ngModel" name="lastName" matInput placeholder="Last Name" type="text" ngModel required minlength="2"
+        maxlength="20">
+    </mat-form-field>
+    <br />
+    <button mat-raised-button color="primary" type="submit" [disabled]="regForm.invalid">Register</button>
+    <span class="regItsOk" *ngIf=regForm.valid>Everything <strong>seems OK!</strong></span>
+    <p class="info" *ngIf="!!(regPass.dirty&&regPass.invalid&&regPass.control.errors.pattern)">Minimum six characters,
+      at least one uppercase letter, one lowercase letter, one number and one special character!</p>
+  </div>
+</form>

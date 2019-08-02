@@ -1,0 +1,29 @@
+<form [formGroup]="this.loginForm" (ngSubmit)="this.triggerLogin(name.value, password.value)">
+
+  <div class="auth-centered">
+
+    <mat-form-field class="form-group">
+      <input #name matInput class="form-control" placeholder="Username" type="text" formControlName="name">
+    </mat-form-field>
+    <span class="alert" *ngIf="!!(this.loginForm.controls.name.dirty&&this.loginForm.controls.name.invalid
+      &&this.loginForm.controls.name.status)&&!!(this.loginForm.controls.name.value.length < 20)
+      &&!!(this.loginForm.controls.name.value.length !== 0)">Your name seems<strong> too short!</strong></span>
+    <span class="alert" *ngIf="!!(this.loginForm.controls.name.value.length === 0)
+    &&!!(this.loginForm.controls.name.dirty)">Name is <strong>required!</strong></span>
+    <span class="alert" *ngIf="!!(this.loginForm.controls.name.value.length > 20)">Your name seems
+      <strong> too long!</strong></span>
+    <br />
+
+    <mat-form-field class="form-group">
+      <input #password matInput class="form-control" placeholder="Password" type="password" formControlName="password">
+    </mat-form-field>
+    <span class="alert" *ngIf="!!(this.loginForm.controls.password.invalid
+    &&this.loginForm.controls.password.value.length===0&&this.loginForm.controls.password.dirty)">Password is
+      <strong>required!</strong></span>
+    <span class="alert" *ngIf="!!(this.loginForm.controls.password.invalid&&this.loginForm.controls.password.dirty)
+    &&!(this.loginForm.controls.password.value.length===0)">The password is <strong>too simple!</strong></span>
+    <br />
+
+    <button mat-raised-button type="submit" color="primary" [disabled]="this.loginForm.invalid">Login</button>
+  </div>
+</form>

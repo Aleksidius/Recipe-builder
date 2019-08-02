@@ -1,0 +1,71 @@
+.card-holder {
+  width: 80%;
+  margin: auto;
+  margin-bottom: 0;
+}
+
+.recipe-details {
+  display: flex;
+  flex-direction: line;
+  margin: auto;
+}
+
+mat-card {
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+  background-color: #f5f5f5;
+}
+
+mat-card-title {
+  display: flex;
+  margin-left: 40px;
+  color: rgb(48, 48, 182);
+}
+
+.recipe-info {
+  display: flex;
+  margin: 5px;
+  margin-left: 20px;
+  margin-right: 40px;
+  font-size: 17px;
+  color: rgb(48, 48, 182);
+}
+.nutrient-info {
+  display: flex;
+  margin: 5px;
+  margin-left: 50px;
+  margin-right: 40px;
+  font-size: 17px;
+  color: rgb(150, 49, 57);
+}
+
+button {
+  margin: 5px;
+}
+
+.button-holder {
+  display: flex;
+  flex-direction: line;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-bottom: 0;
+}
+
+.right-buttons {
+  display: flex;
+  margin-left: auto;
+  margin-right: 0;
+
+}
+
+img {
+  margin-left: 15px;
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 4px;
+}
+
+.col-md-7 {
+  margin-left: 50px;
+}
