@@ -104,21 +104,6 @@ export class ProductsService {
       }
     }
 
-    // async deleteComplexRecipe(id: string): Promise<object> {
-    //   const foundRecipe = await this.complexRecipeRepo.findOne({
-    //     where: {
-    //       id,
-    //       isDeleted: false,
-    //     },
-    //   });
-    //   if (foundRecipe) {
-    //     await this.complexRecipeRepo.update(id, {isDeleted: true});
-    //     return { message: 'Success'};
-    //     } else {
-    //       throw new NotFoundException ('not found or already deleted');
-    //       }
-    //   }
-
   async updateBaseRecipe(recipe: UpdateBaseRecipeDTO): Promise<ShowBaseRecipeDTO> {
     const id = recipe.recipeId;
     // const ingredientsIds = recipe.ingredients.filter( (ingr) => ingr.id.length > 0).map( (ingr) => ingr.id);
@@ -128,7 +113,6 @@ export class ProductsService {
         isDeleted: false,
       },
     });
-    // await this.ingredientRepo.delete({ baseRecipeId: id });
     const queryBuilder = await this.ingredientRepo
     .createQueryBuilder('igrendients')
     .delete()
@@ -146,8 +130,6 @@ export class ProductsService {
         await this.ingredientRepo.save(ingredientToAdd);
 
     });
-
-    // const category: FoodCategories = FoodCategories[recipe.category];
     const updatedRecipe =  await this.baseRecipeRepo.update({id},
     {
     category: recipe.category,
